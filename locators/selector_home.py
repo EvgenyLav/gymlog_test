@@ -1,0 +1,15 @@
+from selenium.webdriver.common.by import By
+
+programs = (By.CSS_SELECTOR, '#top-menu > a:nth-child(5)')
+programs_page_text = (By.XPATH, '//section[1]/h1')
+exercises = (By.XPATH, '//*[@id="top-menu"]/a[4]')
+cardio = (By.XPATH, "//div[1]/div[1]/a[2]")
+articles_button = (By.XPATH, '//a[3]')
+articles_text = (By.XPATH, "//h1")
+news_button = (By.XPATH, '//*[@id="top-menu"]/a[2]')
+news_text = (By.XPATH, '//h1')
+contacts_button = (By.XPATH, '//*[@id="top-menu"/a[1]')
+contacts_email_field = (By.XPATH, '//div[1]/input[2]')
+send_contact_message_button = (By.CSS_SELECTOR, "#feedback-form > div > button")
+error_contact_message_text = (By.CSS_SELECTOR, '#feedback-form > p')
+contact_message = (By.CSS_SELECTOR, '[name=message]')

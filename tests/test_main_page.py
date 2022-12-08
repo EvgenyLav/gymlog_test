@@ -40,10 +40,6 @@ def test_contacts_button(driver):
     home_page.contacts_email_filed()
     assert home_page.contacts_email_filed()
 
-# MAIL = ['1@mail.ru', '32@mail.ru']
-
-# @pytest.mark.parametrize('a', MAIL)
-
 
 def test_entered_only_contacts_email_field(driver):
     home_page = HomePage(driver)

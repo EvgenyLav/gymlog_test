@@ -5,6 +5,12 @@ from pages.login_page import LoginPage
 ERROR_MESSAGE = ['Необходимо заполнить «Электронная почта».', 'Необходимо заполнить «Пароль».',
                  'Неверно указана электронная почта, логин или пароль.']
 
+VALID_EMAIL = ['User384']
+VALID_PSWD = ['QlnNF0']
+
+INAVALID_EMAIL = ['some_mail@.com', "1234@mail.com"]
+INVALID_PSWD = ['10000†qwer0y']
+
 
 @pytest.mark.parametrize('message', ERROR_MESSAGE[:2])
 def test_login_without_credetials(driver, message):
@@ -35,10 +41,6 @@ def test_login_without_password(driver, message):
     assert message in login_page.find_error_message(message)
 
 
-INAVALID_EMAIL = ['some_mail@.com', "1234@mail.com"]
-INVALID_PSWD = ['10000†qwer0y']
-
-
 @pytest.mark.parametrize('message', [ERROR_MESSAGE[2]])
 @pytest.mark.parametrize('email', INAVALID_EMAIL)
 @pytest.mark.parametrize('pswd', INVALID_PSWD)
@@ -52,8 +54,6 @@ def test_login_invalid_credentials(driver, message, email, pswd):
     assert message in login_page.find_error_message(message)
 
 
-VALID_EMAIL = ['User384']
-VALID_PSWD = ['QlnNF0']
 @pytest.mark.parametrize('email', VALID_EMAIL)
 @pytest.mark.parametrize('pswd', VALID_PSWD)
 def test_login_valid_credentials(driver, email, pswd):
@@ -61,4 +61,6 @@ def test_login_valid_credentials(driver, email, pswd):
     login_page.open_page()
     login_page.enter_email(email)
     login_page.enter_password(pswd)
+    login_page.click_check_box()
     login_page.click_submit_button()
+    assert login_page.find_profile_button()

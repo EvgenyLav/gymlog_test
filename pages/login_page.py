@@ -1,10 +1,9 @@
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
-from locators import selector_login as selector
+from locators import selectors_login as selector
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver import ActionChains
 
 
 class LoginPage(BasePage):
@@ -36,3 +35,7 @@ class LoginPage(BasePage):
 
     def click_check_box(self):
         self.find_element(selector.check_box).click()
+
+    def find_profile_button(self):
+        profile_edit_button = self.find_element(selector.profile_button)
+        return profile_edit_button

@@ -17,3 +17,7 @@ class BasePage:
 
     def scroll_page_to_bottom(self):
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+    def accept_alert_messages(self):
+        alert = self.driver.switch_to.alert
+        return alert.accept()

@@ -1,7 +1,5 @@
 from pages.base_page import BasePage
-from selenium.webdriver.common.by import By
 from locators import selectors_login as selector
-from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 

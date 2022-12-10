@@ -1,10 +1,11 @@
 import pytest
+import allure
 from pages.profile_page import ProfilePage
 
 
 VALUES = ['1', '2', '3', '8']
 
-
+@allure.feature('Profile page')
 def test_programs_button(driver, authorization):
     profile_page = ProfilePage(driver)
     profile_page.click_programs_button()
@@ -12,6 +13,7 @@ def test_programs_button(driver, authorization):
     assert "Добавить программу" in profile_page.find_add_program()
 
 
+@allure.feature('Profile page')
 def test_workouts_button(driver, authorization):
     profile_page = ProfilePage(driver)
     profile_page.click_workouts_button()
@@ -19,6 +21,7 @@ def test_workouts_button(driver, authorization):
     assert 'Ваши тренировоки' in profile_page.find_your_wme()
 
 
+@allure.feature('Profile page')
 def test_measurements_button(driver, authorization):
     profile_page = ProfilePage(driver)
     profile_page.click_measurements_button()
@@ -26,6 +29,7 @@ def test_measurements_button(driver, authorization):
     assert 'Ваши замеры' in profile_page.find_your_wme()
 
 
+@allure.feature('Profile page')
 def test_exercises_button(driver, authorization):
     profile_page = ProfilePage(driver)
     profile_page.click_exercises_button()
@@ -40,6 +44,7 @@ def test_setting_button(driver, authorization):
     assert 'Профиль' in profile_page.find_setting_button_text()
 
 
+@allure.feature('My programs')
 @pytest.mark.parametrize('value', VALUES)
 def test_create_new_program(driver, value, authorization):
     profile_page = ProfilePage(driver)
@@ -53,6 +58,7 @@ def test_create_new_program(driver, value, authorization):
     assert profile_page.find_program_setting_button()
 
 
+@allure.feature('My programs')
 def test_create_new_program_without_name(driver, authorization):
     profile_page = ProfilePage(driver)
     profile_page.click_my_programs_button()
@@ -62,6 +68,7 @@ def test_create_new_program_without_name(driver, authorization):
     assert "Необходимо заполнить «Название»." in profile_page.find_alert_message()
 
 
+@allure.feature('My programs')
 def test_add_new_day(driver, authorization):
     profile_page = ProfilePage(driver)
     profile_page.click_my_programs_button()
@@ -74,6 +81,7 @@ def test_add_new_day(driver, authorization):
     assert profile_page.find_created_new_day()
 
 
+@allure.feature('My programs')
 def test_delete_day(driver, authorization, create_new_day):
     profile_page = ProfilePage(driver)
     profile_page.click_delete_day()
@@ -82,6 +90,7 @@ def test_delete_day(driver, authorization, create_new_day):
     assert profile_page.check_delete_new_day()
 
 
+@allure.feature('My programs')
 def test_add_exercise(driver, authorization, create_new_day):
     profile_page = ProfilePage(driver)
     profile_page.click_add_exercises_button()
@@ -91,6 +100,7 @@ def test_add_exercise(driver, authorization, create_new_day):
     assert "Бег на беговой дорожке" in profile_page.find_added_exercise()
 
 
+@allure.feature('My programs')
 def test_edit_exercise(driver, authorization, create_new_day):
     profile_page = ProfilePage(driver)
     profile_page.click_edit_button()
@@ -99,6 +109,30 @@ def test_edit_exercise(driver, authorization, create_new_day):
     profile_page.find_exercise_name()
     profile_page.find_exercise_name()
     assert "name" in profile_page.find_exercise_name()
+
+
+@allure.feature('My workouts')
+def test_add_workout(driver, authorization):
+    profile_page = ProfilePage(driver)
+    profile_page.click_my_workouts_button()
+    profile_page.click_add_new_workout()
+    profile_page.click_save_new_workout()
+    profile_page.find_workout()
+    assert profile_page.find_workout()
+
+
+@allure.feature('My programs')
+def test_delete_workout(driver, authorization):
+    profile_page = ProfilePage(driver)
+    profile_page.click_my_workouts_button()
+    profile_page.click_add_new_workout()
+    profile_page.click_save_new_workout()
+    profile_page.click_delete_workout()
+    profile_page.accept_alert_messages()
+    profile_page.check_delete_workout()
+    assert profile_page.check_delete_workout()
+
+
 
 
 

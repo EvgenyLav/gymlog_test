@@ -1,6 +1,7 @@
 from pages.home_page import HomePage
+import allure
 
-
+@allure.feature('Main Page')
 def test_programs_button(driver):
     home_page = HomePage(driver)
     home_page.open_page()
@@ -9,6 +10,7 @@ def test_programs_button(driver):
     assert "Программы тренировок" in home_page.programs_page_test()
 
 
+@allure.feature('Main Page')
 def test_exercises_button(driver):
     home_page = HomePage(driver)
     home_page.open_page()
@@ -16,6 +18,7 @@ def test_exercises_button(driver):
     assert home_page.cardio_exercises_button()
 
 
+@allure.feature('Main Page')
 def test_articles_button(driver):
     home_page = HomePage(driver)
     home_page.open_page()
@@ -24,6 +27,7 @@ def test_articles_button(driver):
     assert 'Статьи на тему тренажерного зала' in home_page.articles_page_text()
 
 
+@allure.feature('Main Page')
 def test_news_button(driver):
     home_page = HomePage(driver)
     home_page.open_page()
@@ -32,6 +36,7 @@ def test_news_button(driver):
     assert 'Новости' in home_page.news_page_text()
 
 
+@allure.feature('Main Page')
 def test_contacts_button(driver):
     home_page = HomePage(driver)
     home_page.open_page()
@@ -40,6 +45,7 @@ def test_contacts_button(driver):
     assert home_page.contacts_email_filed()
 
 
+@allure.feature('Main Page')
 def test_entered_only_contacts_email_field(driver):
     home_page = HomePage(driver)
     home_page.open_page()
@@ -50,6 +56,7 @@ def test_entered_only_contacts_email_field(driver):
     assert 'Необходимо заполнить «Сообщение».' in home_page.find_error_message_no_text_in_contact_message_field()
 
 
+@allure.feature('Main Page')
 def test_send_contact_message_with_clean_email_field(driver):
     home_page = HomePage(driver)
     home_page.open_page()
@@ -60,6 +67,7 @@ def test_send_contact_message_with_clean_email_field(driver):
     assert 'Необходимо заполнить «Электронная почта».' in home_page.find_error_message_no_text_in_contact_email_field()
 
 
+@allure.feature('Main Page')
 def test_send_contacts_message_all_fields_clear(driver):
     home_page = HomePage(driver)
     home_page.open_page()

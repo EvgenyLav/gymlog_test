@@ -89,29 +89,51 @@ class ProfilePage(BasePage):
             return True
 
     def click_add_exercises_button(self):
-        self.find_element((By.CSS_SELECTOR, '[class="hidden-xs"]')).click()
+        self.find_element(selector.add_exercise_button).click()
 
     def activate_check_box(self):
-        self.find_element((By.CSS_SELECTOR, '[class="icheckbox_minimal-blue"]')).click()
+        self.find_element(selector.exercises_check_box).click()
 
     def click_save_exercise_button(self):
-        self.find_element((By.CSS_SELECTOR, '[class="btn btn-primary"]')).click()
+        self.find_element(selector.save_exercises_button).click()
 
     def find_added_exercise(self):
-        exercise = self.find_element((By.CSS_SELECTOR, '[class="exercise-info pull-left"]')).text
+        exercise = self.find_element(selector.new_exercise).text
         return exercise
 
     def click_edit_button(self):
-        self.find_element((By.XPATH, '//div[1]/div/a[2]/span')).click()
+        self.find_element(selector.edit_button).click()
 
     def enter_exercise_name(self, exercise_name):
-        self.find_element((By.XPATH, '//div/div/div/div[3]/div/div[1]/input[2]')).click()
-        self.find_element((By.XPATH, '//div/div/div/div[3]/div/div[1]/input[2]')).send_keys(exercise_name)
+        self.find_element(selector.exercise_name).click()
+        self.find_element(selector.exercise_name).send_keys(exercise_name)
 
     def click_save_edit_text(self):
-        self.find_element((By.CSS_SELECTOR, '[class="btn btn-primary pull-right"]')).click()
-
+        self.find_element(selector.save_edit_text_button).click()
 
     def find_exercise_name(self):
-        ex_name = self.find_element((By.XPATH, '//div[1]/h3/span')).text
+        ex_name = self.find_element(selector.exercise_name_two).text
         return ex_name
+
+    def click_my_workouts_button(self):
+        self.find_element(selector.my_workouts_button).click()
+
+    def click_add_new_workout(self):
+        self.find_element(selector.add_new_workout_button).click()
+
+    def click_save_new_workout(self):
+        self.find_element(selector.save_new_workout_button).click()
+
+    def find_workout(self):
+        new_workout_day = self.find_element(selector.workout_table).is_displayed()
+        return new_workout_day
+
+    def click_delete_workout(self):
+        self.find_element(selector.delete_workout_button).click()
+
+    def check_delete_workout(self):
+        try:
+            self.find_element(selector.workout_table)
+            return True
+        except NoSuchElementException:
+            return True

@@ -1,7 +1,9 @@
 from pages.home_page import HomePage
 import allure
+import pytest
 
 @allure.feature('Main Page')
+@pytest.mark.main_page
 def test_programs_button(driver):
     home_page = HomePage(driver)
     home_page.open_page()
@@ -11,6 +13,7 @@ def test_programs_button(driver):
 
 
 @allure.feature('Main Page')
+@pytest.mark.main_page
 def test_exercises_button(driver):
     home_page = HomePage(driver)
     home_page.open_page()
@@ -19,6 +22,7 @@ def test_exercises_button(driver):
 
 
 @allure.feature('Main Page')
+@pytest.mark.main_page
 def test_articles_button(driver):
     home_page = HomePage(driver)
     home_page.open_page()
@@ -28,6 +32,7 @@ def test_articles_button(driver):
 
 
 @allure.feature('Main Page')
+@pytest.mark.main_page
 def test_news_button(driver):
     home_page = HomePage(driver)
     home_page.open_page()
@@ -37,6 +42,7 @@ def test_news_button(driver):
 
 
 @allure.feature('Main Page')
+@pytest.mark.main_page
 def test_contacts_button(driver):
     home_page = HomePage(driver)
     home_page.open_page()
@@ -46,6 +52,7 @@ def test_contacts_button(driver):
 
 
 @allure.feature('Main Page')
+@pytest.mark.main_page
 def test_entered_only_contacts_email_field(driver):
     home_page = HomePage(driver)
     home_page.open_page()
@@ -57,6 +64,7 @@ def test_entered_only_contacts_email_field(driver):
 
 
 @allure.feature('Main Page')
+@pytest.mark.main_page
 def test_send_contact_message_with_clean_email_field(driver):
     home_page = HomePage(driver)
     home_page.open_page()
@@ -68,6 +76,7 @@ def test_send_contact_message_with_clean_email_field(driver):
 
 
 @allure.feature('Main Page')
+@pytest.mark.main_page
 def test_send_contacts_message_all_fields_clear(driver):
     home_page = HomePage(driver)
     home_page.open_page()

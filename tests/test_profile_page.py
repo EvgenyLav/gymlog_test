@@ -6,6 +6,7 @@ from pages.profile_page import ProfilePage
 VALUES = ['1', '2', '3', '8']
 
 @allure.feature('Profile page')
+@pytest.mark.profile_page
 def test_programs_button(driver, authorization):
     profile_page = ProfilePage(driver)
     profile_page.click_programs_button()
@@ -14,6 +15,7 @@ def test_programs_button(driver, authorization):
 
 
 @allure.feature('Profile page')
+@pytest.mark.profile_page
 def test_workouts_button(driver, authorization):
     profile_page = ProfilePage(driver)
     profile_page.click_workouts_button()
@@ -22,6 +24,7 @@ def test_workouts_button(driver, authorization):
 
 
 @allure.feature('Profile page')
+@pytest.mark.profile_page
 def test_measurements_button(driver, authorization):
     profile_page = ProfilePage(driver)
     profile_page.click_measurements_button()
@@ -30,6 +33,7 @@ def test_measurements_button(driver, authorization):
 
 
 @allure.feature('Profile page')
+@pytest.mark.profile_page
 def test_exercises_button(driver, authorization):
     profile_page = ProfilePage(driver)
     profile_page.click_exercises_button()
@@ -37,6 +41,8 @@ def test_exercises_button(driver, authorization):
     assert 'Ваши упражнения' in profile_page.find_your_wme()
 
 
+@allure.feature('Profile page')
+@pytest.mark.profile_page
 def test_setting_button(driver, authorization):
     profile_page = ProfilePage(driver)
     profile_page.click_setting_button()
@@ -45,6 +51,7 @@ def test_setting_button(driver, authorization):
 
 
 @allure.feature('My programs')
+@pytest.mark.my_programs
 @pytest.mark.parametrize('value', VALUES)
 def test_create_new_program(driver, value, authorization):
     profile_page = ProfilePage(driver)
@@ -59,6 +66,7 @@ def test_create_new_program(driver, value, authorization):
 
 
 @allure.feature('My programs')
+@pytest.mark.my_programs
 def test_create_new_program_without_name(driver, authorization):
     profile_page = ProfilePage(driver)
     profile_page.click_my_programs_button()
@@ -69,6 +77,7 @@ def test_create_new_program_without_name(driver, authorization):
 
 
 @allure.feature('My programs')
+@pytest.mark.my_programs
 def test_add_new_day(driver, authorization):
     profile_page = ProfilePage(driver)
     profile_page.click_my_programs_button()
@@ -82,6 +91,7 @@ def test_add_new_day(driver, authorization):
 
 
 @allure.feature('My programs')
+@pytest.mark.my_programs
 def test_delete_day(driver, authorization, create_new_day):
     profile_page = ProfilePage(driver)
     profile_page.click_delete_day()
@@ -91,6 +101,7 @@ def test_delete_day(driver, authorization, create_new_day):
 
 
 @allure.feature('My programs')
+@pytest.mark.my_programs
 def test_add_exercise(driver, authorization, create_new_day):
     profile_page = ProfilePage(driver)
     profile_page.click_add_exercises_button()
@@ -101,6 +112,7 @@ def test_add_exercise(driver, authorization, create_new_day):
 
 
 @allure.feature('My programs')
+@pytest.mark.my_programs
 def test_edit_exercise(driver, authorization, create_new_day):
     profile_page = ProfilePage(driver)
     profile_page.click_edit_button()
@@ -112,6 +124,7 @@ def test_edit_exercise(driver, authorization, create_new_day):
 
 
 @allure.feature('My workouts')
+@pytest.mark.my_workouts
 def test_add_workout(driver, authorization):
     profile_page = ProfilePage(driver)
     profile_page.click_my_workouts_button()
@@ -122,6 +135,7 @@ def test_add_workout(driver, authorization):
 
 
 @allure.feature('My programs')
+@pytest.mark.my_workouts
 def test_delete_workout(driver, authorization):
     profile_page = ProfilePage(driver)
     profile_page.click_my_workouts_button()

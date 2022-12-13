@@ -4,7 +4,7 @@ from pages.profile_page import ProfilePage
 from pages.login_page import LoginPage
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='function')
 def driver():
     chrome_driver = webdriver.Chrome()
     chrome_driver.implicitly_wait(10)
@@ -13,7 +13,7 @@ def driver():
     chrome_driver.quit()
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='function')
 def authorization(driver):
     login_page = LoginPage(driver)
     login_page.open_page()

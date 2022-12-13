@@ -5,6 +5,7 @@ from pages.profile_page import ProfilePage
 
 VALUES = ['1', '2', '3', '8']
 
+
 @allure.feature('Profile page')
 @pytest.mark.profile_page
 def test_programs_button(driver, authorization):
@@ -145,11 +146,4 @@ def test_delete_workout(driver, authorization):
     profile_page.accept_alert_messages()
     profile_page.check_delete_workout()
     assert profile_page.check_delete_workout()
-
-
-
-
-
-
-
 
